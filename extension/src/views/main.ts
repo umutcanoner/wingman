@@ -573,7 +573,7 @@ export class MainViewProvider implements vscode.WebviewViewProvider {
             <meta charset="UTF-8">
             <link href="${styleUri}" rel="stylesheet">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Wingman</title>
+            <title>WingmanFork</title>
           </head>
           <body>
             <div id="app"></div>

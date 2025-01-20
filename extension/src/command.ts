@@ -21,7 +21,7 @@ export async function createPrompt(prompt: PromptDefinition & { promptId: string
       for (const placeholder of Object.values(placeholders)) {
         let value = String(placeholder.value);
         if (seenKeys.has(placeholder.key)) {
-          text = text.replaceAll(`{{${placeholder.key}}}`, `[Wingman: possible placeholder circular reference detected (key: ${placeholder.key})]`);
+          text = text.replaceAll(`{{${placeholder.key}}}`, `[WingmanFork: possible placeholder circular reference detected (key: ${placeholder.key})]`);
           continue;
         }
 

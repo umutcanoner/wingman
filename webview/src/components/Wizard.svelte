@@ -29,10 +29,10 @@
       <div class="">
         <FeatherIcon class="w-20 h-20" />
       </div>
-      <div class="text-lg">Welcome to Wingman!</div>
+      <div class="text-lg">Welcome to WingmanFork!</div>
       <div class="space-y-2 text-lg opacity-80">
         <p style="text-align: center;">
-          This release is quite different than the previous versions of Wingman.
+          This release is quite different than the previous versions of WingmanFork.
         </p>
         <p style="text-align: center;">
           There are some breaking changes, but overall we think you'll agree that

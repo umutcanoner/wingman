@@ -56346,7 +56346,7 @@ function cR(r) {
     r[1]
   ), {
     c() {
-      e = b("div"), t = b("div"), ie(n.$$.fragment), a = k(), i = b("div"), i.textContent = "Welcome to Wingman!", o = k(), s = b("div"), s.innerHTML = `<p style="text-align: center;">This release is quite different than the previous versions of Wingman.</p> <p style="text-align: center;">There are some breaking changes, but overall we think you&#39;ll agree that
+      e = b("div"), t = b("div"), ie(n.$$.fragment), a = k(), i = b("div"), i.textContent = "Welcome to WingmanFork!", o = k(), s = b("div"), s.innerHTML = `<p style="text-align: center;">This release is quite different than the previous versions of WingmanFork.</p> <p style="text-align: center;">There are some breaking changes, but overall we think you&#39;ll agree that
           the experience has been largely improved.</p>`, l = k(), _ = b("div"), ie(c.$$.fragment), S(t, "class", ""), S(i, "class", "text-lg"), S(s, "class", "space-y-2 text-lg opacity-80"), S(e, "class", "flex justify-center items-center flex-col space-y-4 max-w-[600px] svelte-z8n7al");
     },
     m(u, p) {

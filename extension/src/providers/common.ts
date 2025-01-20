@@ -146,4 +146,4 @@ export const DEFAULT_MODE: Mode = {
 export interface APIProvider {
 }
 
-export const EXTENSION_SCHEME = "wingman";
+export const EXTENSION_SCHEME = "wingman_fork";

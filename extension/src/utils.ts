@@ -117,7 +117,7 @@ export const createPromptId = (title: string) => {
 };
 
 export const getConfig = <T>(key: string, fallback?: T | undefined): T => {
-  const config = vscode.workspace.getConfiguration("wingman");
+  const config = vscode.workspace.getConfiguration("wingman_fork");
   if (fallback) return config.get(key, fallback) as T;
   return config.get(key) as T;
 };

@@ -1,6 +1,6 @@
 {
-  "name": "ai-wingman",
-  "displayName": "Wingman",
+  "name": "ai-wingman_fork",
+  "displayName": "WingmanFork",
   "version": "2.0.27",
   "description": "[FORK] Your pair programming wingman - Originally created by nvms (https://github.com/nvms/wingman). This is a temporary fork with all credit to the original developer.",
   "categories": [
@@ -50,18 +50,18 @@
     "commands": [
       {
         "command": "wingman.fork.setApiKey",
-        "title": "Wingman: Set API Key"
+        "title": "WingmanFork: Set API Key"
       }
     ],
     "configuration": {
-      "title": "Wingman"
+      "title": "WingmanFork"
     },
     "views": {
       "wingman": [
         {
           "type": "webview",
           "id": "wingman.fork.mainView",
-          "name": "Wingman"
+          "name": "WingmanFork"
         }
       ]
     },
@@ -69,7 +69,7 @@
       "panel": [
         {
           "id": "wingman_fork",
-          "title": "Wingman",
+          "title": "WingmanFork",
           "icon": "assets/GameIconsFeatheredWing.svg"
         }
       ]
