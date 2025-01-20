@@ -13,7 +13,7 @@
 
 <script lang="ts">
   import extComm from "@/messaging";
-  import { activeMode, activePreset } from "@/store";
+  import { activeMode, activePreset, presets } from "@/store";
   import type { Category } from "@/types";
   import { onMount, tick } from "svelte";
   import { ChatEvents } from "../../../shared";
@@ -230,6 +230,15 @@
     const checked = e.target.checked;
     extComm.SET("disablePromptInsertion", checked);
   };
+
+  function handlePresetChange(e: Event) {
+    const select = e.target as HTMLSelectElement;
+    const selectedPreset = $presets.find(p => p.id === select.value);
+    if (selectedPreset) {
+      activePreset.set(selectedPreset);
+      extComm.UPDATE("activePreset", selectedPreset);
+    }
+  }
 </script>
 
 <div class="flex-1 flex flex-col overflow-y-auto">
@@ -336,7 +345,15 @@
             <div class="ml-8">
               <div class="flex flex-col items-end">
                 <span class="opacity-50">Active preset</span>
-                <span>{$activePreset?.name}</span>
+                <select 
+                  class="bg-panel border border-panel rounded px-2 py-1 text-sm"
+                  value={$activePreset?.id}
+                  on:change={handlePresetChange}
+                >
+                  {#each $presets as preset}
+                    <option value={preset.id}>{preset.name}</option>
+                  {/each}
+                </select>
               </div>
             </div>
           </div>
