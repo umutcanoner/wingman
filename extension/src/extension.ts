@@ -22,70 +22,84 @@ export const createDefaultPresetsForAllModes = () => {
       State.set(`${mode.id}-presets`, [
         {
           id: generateId(),
-          name: "OpenAI (gpt-3.5-turbo-1106)",
-          provider: "OpenAI",
+          name: "GPT-3.5 Turbo",
+          provider: "LiteLLM",
           format: "OpenAI",
           tokenizer: "OpenAI",
           url: "https://api.openai.com/v1/chat/completions",
           system: systems.get(mode.id),
-          completionParams: {
-            ...getProviderCompletionParamDefaults("OpenAI"),
-          } as const,
+          completionParams: Object.entries(getProviderCompletionParamDefaults("LiteLLM")).map(([key, value]) => ({
+            key,
+            value
+          })),
         },
         {
           id: generateId(),
-          name: "OpenAI (gpt-4-1106-preview)",
-          provider: "OpenAI",
+          name: "GPT-4 Turbo",
+          provider: "LiteLLM",
           format: "OpenAI",
           tokenizer: "OpenAI",
           url: "https://api.openai.com/v1/chat/completions",
           system: systems.get(mode.id),
-          completionParams: {
-            ...getProviderCompletionParamDefaults("OpenAI"),
-            model: "gpt-4-1106-preview",
-          } as const,
+          completionParams: Object.entries({
+            ...getProviderCompletionParamDefaults("LiteLLM"),
+            model: "gpt-4-1106-preview"
+          }).map(([key, value]) => ({
+            key,
+            value: String(value)
+          })),
         },
         {
           id: generateId(),
-          name: "Anthropic (claude-instant-1)",
-          provider: "Anthropic",
+          name: "Claude Instant",
+          provider: "LiteLLM",
           format: "Anthropic",
-          tokenizer: "Anthropic",
+          tokenizer: "OpenAI",
           url: "https://api.anthropic.com/v1/complete",
           system: systems.get(mode.id),
-          completionParams: {
-            ...getProviderCompletionParamDefaults("Anthropic"),
-          } as const,
+          completionParams: Object.entries({
+            ...getProviderCompletionParamDefaults("LiteLLM"),
+            model: "claude-instant-1"
+          }).map(([key, value]) => ({
+            key,
+            value: String(value)
+          })),
         },
         {
           id: generateId(),
-          name: "Anthropic (claude-2.1)",
-          provider: "Anthropic",
+          name: "Claude 2.1",
+          provider: "LiteLLM",
           format: "Anthropic",
-          tokenizer: "Anthropic",
+          tokenizer: "OpenAI",
           url: "https://api.anthropic.com/v1/complete",
           system: systems.get(mode.id),
-          completionParams: {
-            ...getProviderCompletionParamDefaults("Anthropic"),
-            model: "claude-2.1",
-          } as const,
+          completionParams: Object.entries({
+            ...getProviderCompletionParamDefaults("LiteLLM"),
+            model: "claude-2.1"
+          }).map(([key, value]) => ({
+            key,
+            value: String(value)
+          })),
         },
         {
           id: generateId(),
-          name: "LM Studio",
-          provider: "OpenAI",
+          name: "Local LM Studio",
+          provider: "LiteLLM",
           format: "OpenAI",
           tokenizer: "OpenAI",
           url: "http://localhost:1234/v1/chat/completions",
           system: systems.get(mode.id),
-          completionParams: {
-            ...getProviderCompletionParamDefaults("OpenAI"),
-            model: null,
-            stop: null,
-          } as const,
+          completionParams: Object.entries({
+            ...getProviderCompletionParamDefaults("LiteLLM"),
+            model: "local-model"
+          }).map(([key, value]) => ({
+            key,
+            value: String(value)
+          })),
         }
       ] as Preset[]);
-      State.set(`${mode.id}-activePreset`, State.get(`${mode.id}-presets`)[0]);
+      const presets = State.get(`${mode.id}-presets`) as Preset[];
+      State.set(`${mode.id}-activePreset`, presets[0]);
     });
   }
 

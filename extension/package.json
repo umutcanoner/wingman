@@ -79,6 +79,7 @@
   "dependencies": {
     "@ai-zen/node-fetch-event-source": "^2.1.2",
     "gpt-tokenizer": "^2.8.1",
+    "litellm": "^0.12.0",
     "llama-tokenizer-js": "^1.2.2",
     "p-timeout": "^6.1.4"
   },
