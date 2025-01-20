@@ -21,20 +21,12 @@
   import ChatHistoryList from "./ChatHistoryList.svelte";
   import CommandCategory from "./CommandCategory.svelte";
   import ConversationMessage from "./ConversationMessage.svelte";
-  import PresetSettings from "./PresetSettings.svelte";
-  import PromptSettings from "./PromptSettings.svelte";
   import Sidebar from "./Sidebar.svelte";
-  import ModeSettings from "./ModeSettings.svelte";
   import ExtensionSettings from "./ExtensionSettings.svelte";
   import GrowingTextarea from "./GrowingTextarea.svelte";
-  import { slide, fade } from "svelte/transition";
-  import PlaceholderSettings from "./PlaceholderSettings.svelte";
+  import { slide } from "svelte/transition";
 
-  export let showPresetSettings = false;
-  export let showPromptSettings = false;
-  export let showModeSettings = false;
   export let showExtensionSettings = false;
-  export let showPlaceholderSettings = false;
   export let categories: Category[] = [];
   let description = "";
   let disableSidebar = false;
@@ -241,29 +233,9 @@
 </script>
 
 <div class="flex-1 flex flex-col overflow-y-auto">
-  {#if showPresetSettings}
-    <div class="flex-0 border-b border-panel" transition:slide={{ duration: 150 }}>
-      <PresetSettings />
-    </div>
-  {/if}
-  {#if showPromptSettings}
-    <div class="flex-0 border-b border-panel" transition:slide={{ duration: 150 }}>
-      <PromptSettings on:getPrompts />
-    </div>
-  {/if}
-  {#if showModeSettings}
-    <div class="flex-0 border-b border-panel" transition:slide={{ duration: 150 }}>
-      <ModeSettings on:getPrompts />
-    </div>
-  {/if}
   {#if showExtensionSettings}
     <div class="flex-0 border-b border-panel" transition:slide={{ duration: 150 }}>
       <ExtensionSettings on:getPrompts />
-    </div>
-  {/if}
-  {#if showPlaceholderSettings}
-    <div class="flex-0 border-b border-panel" transition:slide={{ duration: 150 }}>
-      <PlaceholderSettings />
     </div>
   {/if}
   <div class="flex flex-1 overflow-hidden">

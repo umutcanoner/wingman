@@ -31,6 +31,7 @@
   import ModeView from "./ModeView.svelte";
   import Wizard from "./Wizard.svelte";
   import SimpleNotification from "./SimpleNotification.svelte";
+  import GearFineIcon from "./icons/GearFineIcon.svelte";
 
   marked.use(
     markedHighlight({
@@ -165,45 +166,10 @@
     currentCategories = getCategories($activeMode?.id);
   }
 
-  let showPresetSettings = false;
-  let showPromptSettings = false;
   let showExtensionSettings = false;
-  let showModeSettings = false;
-  let showPlaceholderSettings = false;
 
-  const toggleSetting = (
-    setting: "preset" | "prompt" | "extension" | "mode" | "placeholders",
-  ) => {
-    if (setting === "preset" && showPresetSettings) {
-      showPresetSettings = false;
-      return;
-    }
-
-    if (setting === "prompt" && showPromptSettings) {
-      showPromptSettings = false;
-      return;
-    }
-
-    if (setting === "extension" && showExtensionSettings) {
-      showExtensionSettings = false;
-      return;
-    }
-
-    if (setting === "mode" && showModeSettings) {
-      showModeSettings = false;
-      return;
-    }
-
-    if (setting === "placeholders" && showPlaceholderSettings) {
-      showPlaceholderSettings = false;
-      return;
-    }
-
-    showPresetSettings = setting === "preset";
-    showPromptSettings = setting === "prompt";
-    showExtensionSettings = setting === "extension";
-    showModeSettings = setting === "mode";
-    showPlaceholderSettings = setting === "placeholders";
+  const toggleSettings = () => {
+    showExtensionSettings = !showExtensionSettings;
   };
 
   let disableNavigation = false;
@@ -246,79 +212,28 @@
   {/if}
 
   <div class="h-full flex flex-col">
-      <header class="py-0 flex-0 flex justify-between">
-        <div
-          class={`flex-1 flex flex-col ${
-            disableNavigation ? "pointer-events-none opacity-30" : ""
-          }`}
-        >
-          <div class="px-2 flex flex-col border-b border-panel main-bg">
+      <header class="py-0 flex-0 flex justify-between items-center border-b border-panel main-bg">
+        <div class={`flex-1 ${disableNavigation ? "pointer-events-none opacity-30" : ""}`}>
+          <div class="px-2">
             <div class="flex">
               {#each uniqueModes as mode}
                 <button on:click={() => setActiveMode(mode)}>
-                  <div
-                    class={`mode-icon ${
-                      $activeMode?.id === mode.id ? "active" : ""
-                    } py-2 px-2`}
-                  >
+                  <div class={`mode-icon ${$activeMode?.id === mode.id ? "active" : ""} py-2 px-2`}>
                     {mode.label}
                   </div>
                 </button>
               {/each}
             </div>
           </div>
-          <div class="flex flex-col px-2 main-bg">
-            <!-- <div class="px-2 text-xs opacity-50 mt-2 leading-none">
-              Settings
-            </div> -->
-            <div class="flex">
-              <button on:click={() => toggleSetting("mode")}>
-                <div
-                  class={`mode-icon py-2 px-2 ${
-                    showModeSettings ? "active" : ""
-                  }`}
-                >
-                  Modes
-                </div>
-              </button>
-              <button on:click={() => toggleSetting("preset")}>
-                <div
-                  class={`mode-icon py-2 px-2 ${
-                    showPresetSettings ? "active" : ""
-                  }`}
-                >
-                  Presets
-                </div>
-              </button>
-              <button on:click={() => toggleSetting("prompt")}>
-                <div
-                  class={`mode-icon py-2 px-2 ${
-                    showPromptSettings ? "active" : ""
-                  }`}
-                >
-                  Prompts
-                </div>
-              </button>
-              <button on:click={() => toggleSetting("placeholders")}>
-                <div
-                  class={`mode-icon py-2 px-2 ${
-                    showPlaceholderSettings ? "active" : ""
-                  }`}
-                >
-                  Placeholders
-                </div>
-              </button>
-              <button on:click={() => toggleSetting("extension")}>
-                <div
-                  class={`mode-icon py-2 px-2 ${
-                    showExtensionSettings ? "active" : ""
-                  }`}
-                >
-                  Extension
-                </div>
-              </button>
-            </div>
-          </div>
+        </div>
+        <div class="px-4">
+          <button 
+            class="p-2 hover:bg-gray-500/10 rounded-md transition-colors"
+            on:click={toggleSettings}
+            title="Settings"
+          >
+            <GearFineIcon class="w-5 h-5" />
+          </button>
         </div>
       </header>
 
@@ -326,11 +241,7 @@
         {#if $activeMode?.id}
           <ModeView
             bind:closeConversation
-            {showModeSettings}
-            {showPresetSettings}
-            {showPromptSettings}
             {showExtensionSettings}
-            {showPlaceholderSettings}
             categories={currentCategories}
             on:getPrompts={getPrompts}
           />
