@@ -41,7 +41,7 @@ const isValidPlaceholderKey = (key: string) => {
 let currentDispatcher: Dispatcher | undefined;
 
 export class MainViewProvider implements vscode.WebviewViewProvider {
-  public static readonly viewType = "wingman.mainView";
+  public static readonly viewType = "wingman.fork.mainView";
   public static _view?: vscode.WebviewView;
 
   constructor(

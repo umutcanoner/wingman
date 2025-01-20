@@ -107,7 +107,7 @@
       "script": "test",
       "path": "extension",
       "group": "test",
-      "problemMatcher": ["$jest"],
+      "problemMatcher": ["$tsc"],
       "label": "Run Tests",
       "detail": "Run extension tests"
     }

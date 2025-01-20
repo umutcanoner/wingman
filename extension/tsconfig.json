@@ -8,7 +8,7 @@
     "module": "commonjs",
 
     /* Strict Type-Checking Options */
-    "strict": false,
+    "strict": true,
 
     /* Additional Checks */
     "noImplicitReturns": true,
@@ -27,5 +27,5 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "rootDir": ".",
-  },
+  }
 }

@@ -71,6 +71,11 @@ export const applyFormat = (format: keyof typeof formats, command: PreparedComma
   };
 };
 
+interface CompletionParam {
+  name: string;
+  default: string | number | string[];
+}
+
 export const providers = {
   OpenAI: {
     instance: OpenAIProvider,
@@ -84,7 +89,7 @@ export const providers = {
       { name: "presence_penalty", default: 0 },
       { name: "top_p", default: 1 },
       { name: "stop", default: [] },
-    ],
+    ] as const,
   },
   Anthropic: {
     instance: AnthropicProvider,
@@ -96,7 +101,7 @@ export const providers = {
       { name: "model", default: "claude-instant-1" },
       { name: "temperature", default: 0.3 },
       // { name: "stop_sequence", default: ["\\n\\nHuman:"] },
-    ],
+    ] as const,
   },
 };
 
@@ -112,14 +117,19 @@ export const tokenizers = {
   },
 };
 
+type ProviderCompletionParams<T extends keyof typeof providers> = {
+  [K in typeof providers[T]['completionParams'][number]['name']]: 
+    typeof providers[T]['completionParams'][number]['default']
+};
+
 /**
  * @param provider
  * @returns e.g. { n: 1, model: "gpt-3.5-turbo", temperature: 0.3, max_tokens: 2048 }
  */
-export const getProviderCompletionParamDefaults = (
-  provider: keyof typeof providers
-) => {
-  const params = {};
+export const getProviderCompletionParamDefaults = <T extends keyof typeof providers>(
+  provider: T
+): ProviderCompletionParams<T> => {
+  const params = {} as ProviderCompletionParams<T>;
 
   providers[provider].completionParams.forEach((param) => {
     params[param.name] = param.default;

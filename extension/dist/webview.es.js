@@ -52843,13 +52843,13 @@ function eb(r) {
   let e, t, n, a, i, o, s, l, _, c, d, m, u, p, E, T, f, R, D, I, A, M, y, x;
   return {
     c() {
-      e = b("ul"), t = b("li"), n = b("code"), n.textContent = "{{ft}}", a = ee(` - Converts to the language ID of the active
-            window, e.g. "cpp".`), i = k(), o = b("li"), s = b("code"), s.textContent = "{{language}}", l = ee(` - Takes the language ID of the active
-            window, e.g. "cpp" and converts it to a human-readable language name, e.g.
-            "C++". Works with all known VSCode language identifiers.`), _ = k(), c = b("li"), d = b("code"), d.textContent = "{{input}}", m = ee(` - Prompts for, and is replaced by, user
-            input. Additionally, you can use the
-            `), u = b("code"), u.textContent = "{{input:Here's some hint text?}}", p = ee(` format to provide hint text
-            for the input.`), E = k(), T = b("li"), f = b("code"), f.textContent = "{{selection}}", R = ee(` - Replaced with the current selection
+      e = b("ul"), t = b("li"), n = b("code"), n.textContent = "{{ft}}", a = ee(` - Converts to the language ID of the active\r
+            window, e.g. "cpp".`), i = k(), o = b("li"), s = b("code"), s.textContent = "{{language}}", l = ee(` - Takes the language ID of the active\r
+            window, e.g. "cpp" and converts it to a human-readable language name, e.g.\r
+            "C++". Works with all known VSCode language identifiers.`), _ = k(), c = b("li"), d = b("code"), d.textContent = "{{input}}", m = ee(` - Prompts for, and is replaced by, user\r
+            input. Additionally, you can use the\r
+            `), u = b("code"), u.textContent = "{{input:Here's some hint text?}}", p = ee(` format to provide hint text\r
+            for the input.`), E = k(), T = b("li"), f = b("code"), f.textContent = "{{selection}}", R = ee(` - Replaced with the current selection\r
             in the active editor.`), D = k(), I = b("li"), A = b("code"), A.textContent = "{{:PARAM:VAL}}", M = ee(" - Set a completion parameter for the prompt when it is dispatched, e.g. "), y = b("code"), y.textContent = "{{:top_k:4}}", x = ee("."), S(e, "class", "list-disc pl-4 space-y-4");
     },
     m(G, P) {
@@ -54393,8 +54393,8 @@ function Lb(r) {
   );
   return {
     c() {
-      e = b("div"), t = b("div"), n = b("h2"), n.textContent = "Restore defaults", a = k(), i = b("p"), i.textContent = `This will restore the default settings for the extension. The original
-      modes will be restored along with all default prompts and presets.
+      e = b("div"), t = b("div"), n = b("h2"), n.textContent = "Restore defaults", a = k(), i = b("p"), i.textContent = `This will restore the default settings for the extension. The original\r
+      modes will be restored along with all default prompts and presets.\r
       Any stored API keys will not be removed.`, o = k(), ie(s.$$.fragment), l = k(), ie(_.$$.fragment), c = k(), p && p.c(), d = k(), m = b("div"), m.innerHTML = '<h2 class="text-lg font-semibold">Interpolations</h2> <h3 class="text font-semibold">Language instructions</h3> <p>WIP</p>', S(n, "class", "text-lg font-semibold"), S(t, "class", "space-y-2"), S(m, "class", "space-y-2"), S(e, "class", "flex-1 bg-gray-500/5 space-y-6 p-4");
     },
     m(E, T) {
@@ -54984,7 +54984,7 @@ function $b(r) {
     r[6]
   ), {
     c() {
-      e = b("p"), e.textContent = `Are you sure you want to delete this placeholder? This action
+      e = b("p"), e.textContent = `Are you sure you want to delete this placeholder? This action\r
               cannot be undone.`, t = k(), n = b("div"), ie(a.$$.fragment), S(n, "class", "flex justify-center mt-4");
     },
     m(o, s) {

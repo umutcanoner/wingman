@@ -29,8 +29,8 @@ export const createDefaultPresetsForAllModes = () => {
           url: "https://api.openai.com/v1/chat/completions",
           system: systems.get(mode.id),
           completionParams: {
-            ...getProviderCompletionParamDefaults("OpenAI") as any,
-          },
+            ...getProviderCompletionParamDefaults("OpenAI"),
+          } as const,
         },
         {
           id: generateId(),
@@ -41,9 +41,9 @@ export const createDefaultPresetsForAllModes = () => {
           url: "https://api.openai.com/v1/chat/completions",
           system: systems.get(mode.id),
           completionParams: {
-            ...getProviderCompletionParamDefaults("OpenAI") as any,
+            ...getProviderCompletionParamDefaults("OpenAI"),
             model: "gpt-4-1106-preview",
-          },
+          } as const,
         },
         {
           id: generateId(),
@@ -54,8 +54,8 @@ export const createDefaultPresetsForAllModes = () => {
           url: "https://api.anthropic.com/v1/complete",
           system: systems.get(mode.id),
           completionParams: {
-            ...getProviderCompletionParamDefaults("Anthropic") as any,
-          },
+            ...getProviderCompletionParamDefaults("Anthropic"),
+          } as const,
         },
         {
           id: generateId(),
@@ -66,9 +66,9 @@ export const createDefaultPresetsForAllModes = () => {
           url: "https://api.anthropic.com/v1/complete",
           system: systems.get(mode.id),
           completionParams: {
-            ...getProviderCompletionParamDefaults("Anthropic") as any,
+            ...getProviderCompletionParamDefaults("Anthropic"),
             model: "claude-2.1",
-          },
+          } as const,
         },
         {
           id: generateId(),
@@ -79,10 +79,10 @@ export const createDefaultPresetsForAllModes = () => {
           url: "http://localhost:1234/v1/chat/completions",
           system: systems.get(mode.id),
           completionParams: {
-            ...getProviderCompletionParamDefaults("OpenAI") as any,
+            ...getProviderCompletionParamDefaults("OpenAI"),
             model: null,
             stop: null,
-          },
+          } as const,
         }
       ] as Preset[]);
       State.set(`${mode.id}-activePreset`, State.get(`${mode.id}-presets`)[0]);
@@ -119,7 +119,7 @@ export const createState = () => {
   State.set(stateKeys.stateCreated(), true);
 };
 
-export const promptSetProviderKey = async (provider: string) => {
+export const promptSetProviderKey = async (provider: keyof typeof providers) => {
   if (!providers[provider]) { return; }
   const key = await vscode.window.showInputBox({ prompt: `Enter your ${provider} API key.` });
   if (key === undefined) return;
@@ -142,7 +142,7 @@ export function activate(context: vscode.ExtensionContext) {
   // }
 
   try {
-    const setApiKeyCommand = vscode.commands.registerCommand("wingman.setApiKey", async () => {
+    const setApiKeyCommand = vscode.commands.registerCommand("wingman.fork.setApiKey", async () => {
       const selectedProvider = await vscode.window.showQuickPick(
         Object.keys(providers).map((key) => ({ label: key })),
         { placeHolder: "Select the provider you want to set the API key for." },
