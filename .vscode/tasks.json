@@ -1,0 +1,115 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "watch",
+      "path": "extension",
+      "problemMatcher": "$tsc-watch",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "never",
+        "panel": "dedicated"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "label": "Watch Extension",
+      "detail": "Watch and compile extension TypeScript files"
+    },
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "webview",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^.*$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*VITE.*",
+          "endsPattern": ".*ready in.*"
+        }
+      },
+      "label": "Start Webview Dev Server",
+      "detail": "Start Vite dev server for webview development"
+    },
+    {
+      "label": "Build All",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Build Webview",
+        "Build Extension"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "extension",
+      "group": "build",
+      "problemMatcher": ["$tsc"],
+      "label": "Build Extension",
+      "detail": "Build the VS Code extension"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "webview",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "Build Webview",
+      "detail": "Build the webview UI"
+    },
+    {
+      "type": "npm",
+      "script": "lint",
+      "path": "extension",
+      "problemMatcher": ["$eslint-stylish"],
+      "label": "Lint Extension",
+      "detail": "Lint extension TypeScript files",
+      "presentation": {
+        "reveal": "silent",
+        "revealProblems": "onProblem"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "lint",
+      "path": "webview",
+      "problemMatcher": ["$eslint-stylish"],
+      "label": "Lint Webview",
+      "detail": "Lint webview TypeScript files",
+      "presentation": {
+        "reveal": "silent",
+        "revealProblems": "onProblem"
+      }
+    },
+    {
+      "label": "Lint All",
+      "dependsOn": [
+        "Lint Extension",
+        "Lint Webview"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "script": "test",
+      "path": "extension",
+      "group": "test",
+      "problemMatcher": ["$jest"],
+      "label": "Run Tests",
+      "detail": "Run extension tests"
+    }
+  ]
+}

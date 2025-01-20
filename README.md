@@ -1,3 +1,9 @@
+# ⚠️ IMPORTANT NOTICE
+
+This is a temporary fork of the original [Wingman](https://github.com/nvms/wingman) extension created by [nvms](https://github.com/nvms). All credit and kudos go to the original developer. Please check out and support the original project.
+
+---
+
 A highly flexible, customizable, and powerful extension for working with LLMs within Visual Studio Code.
 
 Highlights:
